@@ -38,24 +38,20 @@ class AppViewModel: ObservableObject {
     }
 
     func login(username: String, password: String) async throws {
-        do {
-            let response = try await AuthService.shared.login(
-                username: username,
-                password: password
-            )
 
-            KeychainService.shared.saveToken(response.access_token)
+        let response = try await AuthService.shared.login(
+            username: username,
+            password: password
+        )
 
-            let user = try await UserService.shared.fetchCurrentUser(
-                token: response.access_token
-            )
+        KeychainService.shared.saveToken(response.access_token)
 
-            userTitle = user.title
-            authState = .authenticated
+        let user = try await UserService.shared.fetchCurrentUser(
+            token: response.access_token
+        )
 
-        } catch {
-            authState = .unauthenticated
-        }
+        userTitle = user.title
+        authState = .authenticated
     }
 
     func logout() {

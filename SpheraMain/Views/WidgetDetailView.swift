@@ -4,13 +4,49 @@ import SwiftUI
 struct WidgetDetailView: View {
     
     let widgetName: String
-    @ObservedObject var viewModel: WidgetDetailViewModel   // 👈 получаем извне
+    @ObservedObject var viewModel: WidgetDetailViewModel
+    
+    @State private var isRotating = false
+    @State private var statusMessage: String?
+    @State private var isSuccess: Bool = true
+    @State private var showStatus: Bool = false
     
     var body: some View {
-        VStack {
+        VStack(spacing: 12) {
             
-            if viewModel.isLoading {
-                Text("Загрузка данных...")
+            // 🔄 Кнопка обновления
+            Button {
+                Task {
+                    await refresh()
+                }
+            } label: {
+                Image(systemName: "arrow.clockwise")
+                    .font(.title2)
+                    .rotationEffect(.degrees(isRotating ? 360 : 0))
+                    .animation(
+                        isRotating
+                        ? .linear(duration: 1).repeatForever(autoreverses: false)
+                        : .default,
+                        value: isRotating
+                    )
+            }
+            .buttonStyle(.plain)
+            .disabled(viewModel.isLoading)
+            .help("Обновить данные")
+            
+            
+            // 🟢🔴 Статус обновления
+            if let message = statusMessage, showStatus {
+                Text(message)
+                    .font(.caption)
+                    .foregroundColor(isSuccess ? .green : .red)
+                    .transition(.opacity)
+            }
+            
+            
+            // 📊 Контент
+            if viewModel.isLoading && viewModel.rawJson == nil {
+                ProgressView("Загрузка данных...")
                 
             } else if let error = viewModel.errorMessage {
                 Text("Ошибка: \(error)")
@@ -33,6 +69,9 @@ struct WidgetDetailView: View {
             }
         }
         .padding()
+        .onChange(of: viewModel.isLoading) { _, newValue in
+            isRotating = newValue
+        }
     }
     
     // MARK: - Универсальная таблица
@@ -221,5 +260,32 @@ struct WidgetDetailView: View {
             .frame(width: 24, height: 24)
             .clipShape(Circle())
         )
+    }
+}
+
+
+// MARK: - Refresh logic
+private extension WidgetDetailView {
+    
+    func refresh() async {
+        await viewModel.refreshWidget(name: widgetName)
+        
+        withAnimation {
+            if viewModel.errorMessage == nil {
+                statusMessage = "Данные обновлены"
+                isSuccess = true
+            } else {
+                statusMessage = "Не смогли получить актуальные данные для этого виджета"
+                isSuccess = false
+            }
+            showStatus = true
+        }
+        
+        // плавное исчезновение через 3 секунды
+        try? await Task.sleep(nanoseconds: 3_000_000_000)
+        
+        withAnimation {
+            showStatus = false
+        }
     }
 }

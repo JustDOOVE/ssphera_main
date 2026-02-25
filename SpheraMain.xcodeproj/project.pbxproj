@@ -6,14 +6,76 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		49F5AF942F504A0B00F91C02 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F5AF932F504A0B00F91C02 /* WidgetKit.framework */; };
+		49F5AF962F504A0B00F91C02 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F5AF952F504A0B00F91C02 /* SwiftUI.framework */; };
+		49F5AFA32F504A0C00F91C02 /* SpheraMainWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 49F5AF912F504A0B00F91C02 /* SpheraMainWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		49F5AFA12F504A0C00F91C02 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49EA543D2F4EF891004508E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 49F5AF902F504A0B00F91C02;
+			remoteInfo = sspheraMainWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		49F5AFA42F504A0C00F91C02 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				49F5AFA32F504A0C00F91C02 /* SpheraMainWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		49EA54452F4EF891004508E9 /* SpheraMain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpheraMain.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		49F5AF912F504A0B00F91C02 /* SpheraMainWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SpheraMainWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		49F5AF932F504A0B00F91C02 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		49F5AF952F504A0B00F91C02 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		49F5AFAA2F504AC200F91C02 /* sspheraMainWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = sspheraMainWidgetExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		49F5AFA72F504A0C00F91C02 /* Exceptions for "sspheraMainWidget" folder in "SpheraMainWidget" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 49F5AF902F504A0B00F91C02 /* SpheraMainWidget */;
+		};
+		49F5AFAC2F504C9300F91C02 /* Exceptions for "SpheraMain" folder in "SpheraMainWidget" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Services/KeychainService.swift,
+			);
+			target = 49F5AF902F504A0B00F91C02 /* SpheraMainWidget */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		49EA54472F4EF891004508E9 /* SpheraMain */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				49F5AFAC2F504C9300F91C02 /* Exceptions for "SpheraMain" folder in "SpheraMainWidget" target */,
+			);
 			path = SpheraMain;
+			sourceTree = "<group>";
+		};
+		49F5AF972F504A0B00F91C02 /* sspheraMainWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				49F5AFA72F504A0C00F91C02 /* Exceptions for "sspheraMainWidget" folder in "SpheraMainWidget" target */,
+			);
+			path = sspheraMainWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,13 +88,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		49F5AF8E2F504A0B00F91C02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49F5AF962F504A0B00F91C02 /* SwiftUI.framework in Frameworks */,
+				49F5AF942F504A0B00F91C02 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		49EA543C2F4EF891004508E9 = {
 			isa = PBXGroup;
 			children = (
+				49F5AFAA2F504AC200F91C02 /* sspheraMainWidgetExtension.entitlements */,
 				49EA54472F4EF891004508E9 /* SpheraMain */,
+				49F5AF972F504A0B00F91C02 /* sspheraMainWidget */,
+				49F5AF922F504A0B00F91C02 /* Frameworks */,
 				49EA54462F4EF891004508E9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +115,18 @@
 			isa = PBXGroup;
 			children = (
 				49EA54452F4EF891004508E9 /* SpheraMain.app */,
+				49F5AF912F504A0B00F91C02 /* SpheraMainWidget.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		49F5AF922F504A0B00F91C02 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				49F5AF932F504A0B00F91C02 /* WidgetKit.framework */,
+				49F5AF952F504A0B00F91C02 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -55,10 +139,12 @@
 				49EA54412F4EF891004508E9 /* Sources */,
 				49EA54422F4EF891004508E9 /* Frameworks */,
 				49EA54432F4EF891004508E9 /* Resources */,
+				49F5AFA42F504A0C00F91C02 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				49F5AFA22F504A0C00F91C02 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				49EA54472F4EF891004508E9 /* SpheraMain */,
@@ -69,6 +155,28 @@
 			productName = SpheraMain;
 			productReference = 49EA54452F4EF891004508E9 /* SpheraMain.app */;
 			productType = "com.apple.product-type.application";
+		};
+		49F5AF902F504A0B00F91C02 /* SpheraMainWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49F5AFA82F504A0C00F91C02 /* Build configuration list for PBXNativeTarget "SpheraMainWidget" */;
+			buildPhases = (
+				49F5AF8D2F504A0B00F91C02 /* Sources */,
+				49F5AF8E2F504A0B00F91C02 /* Frameworks */,
+				49F5AF8F2F504A0B00F91C02 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				49F5AF972F504A0B00F91C02 /* sspheraMainWidget */,
+			);
+			name = SpheraMainWidget;
+			packageProductDependencies = (
+			);
+			productName = sspheraMainWidgetExtension;
+			productReference = 49F5AF912F504A0B00F91C02 /* SpheraMainWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -81,6 +189,9 @@
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					49EA54442F4EF891004508E9 = {
+						CreatedOnToolsVersion = 26.2;
+					};
+					49F5AF902F504A0B00F91C02 = {
 						CreatedOnToolsVersion = 26.2;
 					};
 				};
@@ -100,12 +211,20 @@
 			projectRoot = "";
 			targets = (
 				49EA54442F4EF891004508E9 /* SpheraMain */,
+				49F5AF902F504A0B00F91C02 /* SpheraMainWidget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		49EA54432F4EF891004508E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49F5AF8F2F504A0B00F91C02 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +241,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		49F5AF8D2F504A0B00F91C02 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		49F5AFA22F504A0C00F91C02 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 49F5AF902F504A0B00F91C02 /* SpheraMainWidget */;
+			targetProxy = 49F5AFA12F504A0C00F91C02 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		49EA544E2F4EF892004508E9 /* Debug */ = {
@@ -250,6 +384,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SpheraMain/SpheraMain.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -292,6 +427,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SpheraMain/SpheraMain.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -329,6 +465,94 @@
 			};
 			name = Release;
 		};
+		49F5AFA52F504A0C00F91C02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = sspheraMainWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CXWK99GY8T;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = sspheraMainWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = sspheraMainWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.ssphera.desktopwidgets.SpheraMain.sspheraMainWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		49F5AFA62F504A0C00F91C02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = sspheraMainWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CXWK99GY8T;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = sspheraMainWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = sspheraMainWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.ssphera.desktopwidgets.SpheraMain.sspheraMainWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -346,6 +570,15 @@
 			buildConfigurations = (
 				49EA54512F4EF892004508E9 /* Debug */,
 				49EA54522F4EF892004508E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49F5AFA82F504A0C00F91C02 /* Build configuration list for PBXNativeTarget "SpheraMainWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49F5AFA52F504A0C00F91C02 /* Debug */,
+				49F5AFA62F504A0C00F91C02 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
