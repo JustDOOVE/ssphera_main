@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "49F5AF902F504A0B00F91C02"
-               BuildableName = "SpheraMainWidget.appex"
-               BlueprintName = "SpheraMainWidget"
+               BuildableName = "SpheraAverageSelfWorkhoursWidget.appex"
+               BlueprintName = "SpheraAverageSelfWorkhoursWidget"
                ReferencedContainer = "container:SpheraMain.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

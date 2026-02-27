@@ -1,12 +1,15 @@
 import WidgetKit
 import SwiftUI
+import AppIntents
 
 // MARK: - Entry
 
 struct WorkhoursEntry: TimelineEntry {
     let date: Date
     let value: String
+    let numericValue: Double?
 }
+
 
 
 // MARK: - Provider
@@ -14,27 +17,35 @@ struct WorkhoursEntry: TimelineEntry {
 struct WorkhoursProvider: TimelineProvider {
     
     func placeholder(in context: Context) -> WorkhoursEntry {
-        WorkhoursEntry(date: Date(), value: "—")
+        WorkhoursEntry(date: Date(), value: "7.2", numericValue: 7.2)
     }
     
     func getSnapshot(in context: Context, completion: @escaping (WorkhoursEntry) -> Void) {
         Task {
-            let value = await fetchWorkhours()
-            completion(WorkhoursEntry(date: Date(), value: value))
+            let result = await fetchWorkhours(ignoreCache: true)
+            completion(
+                WorkhoursEntry(
+                    date: Date(),
+                    value: result.string,
+                    numericValue: result.number
+                )
+            )
         }
     }
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<WorkhoursEntry>) -> Void) {
         Task {
-            let value = await fetchWorkhours()
+            let result = await fetchWorkhours(ignoreCache: true)
             
-            let entry = WorkhoursEntry(date: Date(), value: value)
+            let entry = WorkhoursEntry(
+                date: Date(),
+                value: result.string,
+                numericValue: result.number
+            )
             
-            // обновление каждые 30 минут
             let nextUpdate = Calendar.current.date(byAdding: .minute, value: 30, to: Date())!
             
-            let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
-            completion(timeline)
+            completion(Timeline(entries: [entry], policy: .after(nextUpdate)))
         }
     }
 }
@@ -42,14 +53,11 @@ struct WorkhoursProvider: TimelineProvider {
 
 // MARK: - Network
 
-func fetchWorkhours() async -> String {
+func fetchWorkhours(ignoreCache: Bool) async -> (string: String, number: Double?) {
     
-    guard let token = KeychainService.shared.getToken() else {
-        return "?"
-    }
-    
-    guard let url = URL(string: "https://sbps.ru/api/desktop/widgets/query") else {
-        return "?"
+    guard let token = KeychainService.shared.getToken(),
+          let url = URL(string: "https://sbps.ru/api/desktop/widgets/query") else {
+        return ("?", nil)
     }
     
     var request = URLRequest(url: url)
@@ -60,45 +68,77 @@ func fetchWorkhours() async -> String {
     
     let body: [String: Any] = [
         "name": "RedmineSelfAverageWorkhoursWidget",
-        "ignore_cache": false
+        "ignore_cache": ignoreCache
     ]
     
     do {
         request.httpBody = try JSONSerialization.data(withJSONObject: body)
         let (data, _) = try await URLSession.shared.data(for: request)
         
-        if let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-           let value = jsonObject["value"] as? String {
-            return value
+        if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+           let valueString = json["value"] as? String,
+           let number = Double(valueString.replacingOccurrences(of: ",", with: ".")) {
+            return (valueString, number)
         }
         
     } catch {
-        print("Widget fetch error:", error)
+        print("Widget error:", error)
     }
     
-    return "?"
+    return ("?", nil)
+}
+
+
+// MARK: - AppIntent (ручное обновление)
+
+struct RefreshWorkhoursIntent: AppIntent {
+    static var title: LocalizedStringResource = "Обновить данные"
+    
+    func perform() async throws -> some IntentResult {
+        WidgetCenter.shared.reloadAllTimelines()
+        return .result()
+    }
 }
 
 
 // MARK: - View
 
 struct WorkhoursWidgetEntryView : View {
-    var entry: WorkhoursProvider.Entry
+    var entry: WorkhoursEntry
     
     var body: some View {
         VStack(spacing: 8) {
-            Text("Средние трудочасы")
-                .font(.caption)
-                .foregroundStyle(.secondary)
+            
+            HStack {
+                Text("Средние трудочасы")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                
+                Spacer()
+                
+                Button(intent: RefreshWorkhoursIntent()) {
+                    Image(systemName: "arrow.clockwise")
+                }
+                .buttonStyle(.plain)
+            }
             
             Text(entry.value)
-                .font(.system(size: 44, weight: .bold))
+                .font(.system(size: 36, weight: .bold))
+                .foregroundStyle(colorForValue(entry.numericValue))
+            
+            Text("Обновлено \(entry.date.formatted(date: .omitted, time: .shortened))")
+                .font(.caption2)
+                .foregroundStyle(.secondary)
         }
         .padding()
         .containerBackground(for: .widget) {
-            // Здесь вы можете задать фон
-            Color.clear // или любой другой цвет/вьюху
+            Color.clear
         }
+    }
+    
+    func colorForValue(_ value: Double?) -> Color {
+        guard let value else { return .secondary }
+        return value >= 6.0 ? .green : .red
     }
 }
 
@@ -116,5 +156,16 @@ struct WorkhoursWidget: Widget {
         .configurationDisplayName("Средние трудочасы")
         .description("Показывает среднее количество трудочасов.")
         .supportedFamilies([.systemSmall, .systemMedium])
+    }
+}
+
+
+// MARK: - Bundle
+
+@main
+struct WorkhoursWidgetBundle: WidgetBundle {
+    var body: some Widget {
+        WorkhoursWidget()
+        EmployeeWorkhoursWidget()
     }
 }

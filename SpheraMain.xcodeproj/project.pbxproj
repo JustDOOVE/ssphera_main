@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		49F5AF942F504A0B00F91C02 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F5AF932F504A0B00F91C02 /* WidgetKit.framework */; };
 		49F5AF962F504A0B00F91C02 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F5AF952F504A0B00F91C02 /* SwiftUI.framework */; };
-		49F5AFA32F504A0C00F91C02 /* SpheraMainWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 49F5AF912F504A0B00F91C02 /* SpheraMainWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		49F5AFA32F504A0C00F91C02 /* SpheraAverageSelfWorkhoursWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 49F5AF912F504A0B00F91C02 /* SpheraAverageSelfWorkhoursWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,7 +29,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				49F5AFA32F504A0C00F91C02 /* SpheraMainWidget.appex in Embed Foundation Extensions */,
+				49F5AFA32F504A0C00F91C02 /* SpheraAverageSelfWorkhoursWidget.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -38,26 +38,26 @@
 
 /* Begin PBXFileReference section */
 		49EA54452F4EF891004508E9 /* SpheraMain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpheraMain.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		49F5AF912F504A0B00F91C02 /* SpheraMainWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SpheraMainWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		49F5AF912F504A0B00F91C02 /* SpheraAverageSelfWorkhoursWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SpheraAverageSelfWorkhoursWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F5AF932F504A0B00F91C02 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		49F5AF952F504A0B00F91C02 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		49F5AFAA2F504AC200F91C02 /* sspheraMainWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = sspheraMainWidgetExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		49F5AFA72F504A0C00F91C02 /* Exceptions for "sspheraMainWidget" folder in "SpheraMainWidget" target */ = {
+		49F5AFA72F504A0C00F91C02 /* Exceptions for "sspheraMainWidget" folder in "SpheraAverageSelfWorkhoursWidget" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 49F5AF902F504A0B00F91C02 /* SpheraMainWidget */;
+			target = 49F5AF902F504A0B00F91C02 /* SpheraAverageSelfWorkhoursWidget */;
 		};
-		49F5AFAC2F504C9300F91C02 /* Exceptions for "SpheraMain" folder in "SpheraMainWidget" target */ = {
+		49F5AFAC2F504C9300F91C02 /* Exceptions for "SpheraMain" folder in "SpheraAverageSelfWorkhoursWidget" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Services/KeychainService.swift,
 			);
-			target = 49F5AF902F504A0B00F91C02 /* SpheraMainWidget */;
+			target = 49F5AF902F504A0B00F91C02 /* SpheraAverageSelfWorkhoursWidget */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -65,7 +65,7 @@
 		49EA54472F4EF891004508E9 /* SpheraMain */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				49F5AFAC2F504C9300F91C02 /* Exceptions for "SpheraMain" folder in "SpheraMainWidget" target */,
+				49F5AFAC2F504C9300F91C02 /* Exceptions for "SpheraMain" folder in "SpheraAverageSelfWorkhoursWidget" target */,
 			);
 			path = SpheraMain;
 			sourceTree = "<group>";
@@ -73,7 +73,7 @@
 		49F5AF972F504A0B00F91C02 /* sspheraMainWidget */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				49F5AFA72F504A0C00F91C02 /* Exceptions for "sspheraMainWidget" folder in "SpheraMainWidget" target */,
+				49F5AFA72F504A0C00F91C02 /* Exceptions for "sspheraMainWidget" folder in "SpheraAverageSelfWorkhoursWidget" target */,
 			);
 			path = sspheraMainWidget;
 			sourceTree = "<group>";
@@ -115,7 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				49EA54452F4EF891004508E9 /* SpheraMain.app */,
-				49F5AF912F504A0B00F91C02 /* SpheraMainWidget.appex */,
+				49F5AF912F504A0B00F91C02 /* SpheraAverageSelfWorkhoursWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,9 +156,9 @@
 			productReference = 49EA54452F4EF891004508E9 /* SpheraMain.app */;
 			productType = "com.apple.product-type.application";
 		};
-		49F5AF902F504A0B00F91C02 /* SpheraMainWidget */ = {
+		49F5AF902F504A0B00F91C02 /* SpheraAverageSelfWorkhoursWidget */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 49F5AFA82F504A0C00F91C02 /* Build configuration list for PBXNativeTarget "SpheraMainWidget" */;
+			buildConfigurationList = 49F5AFA82F504A0C00F91C02 /* Build configuration list for PBXNativeTarget "SpheraAverageSelfWorkhoursWidget" */;
 			buildPhases = (
 				49F5AF8D2F504A0B00F91C02 /* Sources */,
 				49F5AF8E2F504A0B00F91C02 /* Frameworks */,
@@ -171,11 +171,11 @@
 			fileSystemSynchronizedGroups = (
 				49F5AF972F504A0B00F91C02 /* sspheraMainWidget */,
 			);
-			name = SpheraMainWidget;
+			name = SpheraAverageSelfWorkhoursWidget;
 			packageProductDependencies = (
 			);
 			productName = sspheraMainWidgetExtension;
-			productReference = 49F5AF912F504A0B00F91C02 /* SpheraMainWidget.appex */;
+			productReference = 49F5AF912F504A0B00F91C02 /* SpheraAverageSelfWorkhoursWidget.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -211,7 +211,7 @@
 			projectRoot = "";
 			targets = (
 				49EA54442F4EF891004508E9 /* SpheraMain */,
-				49F5AF902F504A0B00F91C02 /* SpheraMainWidget */,
+				49F5AF902F504A0B00F91C02 /* SpheraAverageSelfWorkhoursWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -253,7 +253,7 @@
 /* Begin PBXTargetDependency section */
 		49F5AFA22F504A0C00F91C02 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 49F5AF902F504A0B00F91C02 /* SpheraMainWidget */;
+			target = 49F5AF902F504A0B00F91C02 /* SpheraAverageSelfWorkhoursWidget */;
 			targetProxy = 49F5AFA12F504A0C00F91C02 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -488,7 +488,7 @@
 				ENABLE_RESOURCE_ACCESS_USB = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = sspheraMainWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = sspheraMainWidget;
+				INFOPLIST_KEY_CFBundleDisplayName = SpheraAverageSelfWorkhoursWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -532,7 +532,7 @@
 				ENABLE_RESOURCE_ACCESS_USB = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = sspheraMainWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = sspheraMainWidget;
+				INFOPLIST_KEY_CFBundleDisplayName = SpheraAverageSelfWorkhoursWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -574,7 +574,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		49F5AFA82F504A0C00F91C02 /* Build configuration list for PBXNativeTarget "SpheraMainWidget" */ = {
+		49F5AFA82F504A0C00F91C02 /* Build configuration list for PBXNativeTarget "SpheraAverageSelfWorkhoursWidget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				49F5AFA52F504A0C00F91C02 /* Debug */,
